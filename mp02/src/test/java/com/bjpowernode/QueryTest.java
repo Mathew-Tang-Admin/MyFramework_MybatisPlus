@@ -12,6 +12,7 @@ import java.util.*;
 
 /**
  * 等值查询、模糊查询、模糊查询、判空查询、包含查询、分组查询、聚合查询、排序查询、func查询、逻辑查询、自定义条件查询
+ * last查询、 exists查询、select查询
  * @author MathewTang
  */
 @SpringBootTest
@@ -455,6 +456,45 @@ public class QueryTest {
         // 分页的正确偏移量公式应为：offset = (页码-1) * 每页数量。
         // 即从第几条开始，每页几条
         queryWrapper.last("limit 0,2");
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+
+    /** TODO:  exists查询 之 exists */
+    @Test
+    void  exists() {
+        // 1.创建QueryWrapper对象
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        // 2.构建查询条件
+        //当powershop_user表中存在至少一条年龄为18岁的用户时，返回该表所有用户的数据
+        queryWrapper.exists("select id from powershop_user where age = 18");
+        // 3.完成查询
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+    /** TODO:  exists查询 之 notExists */
+    @Test
+    void  notExists() {
+        // 1.创建QueryWrapper对象
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        // 2.构建查询条件
+        queryWrapper.notExists("select id from powershop_user where age = 188");
+        // 3.完成查询
+        List<User> users = userMapper.selectList(queryWrapper);
+        System.out.println(users);
+    }
+
+
+    /** TODO:  select查询 */
+    @Test
+    void  select() {
+        // 1.创建QueryWrapper对象
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        // 2.构建查询条件
+        queryWrapper.select(User::getId,User::getName);
+        // 3.完成查询
         List<User> users = userMapper.selectList(queryWrapper);
         System.out.println(users);
     }
