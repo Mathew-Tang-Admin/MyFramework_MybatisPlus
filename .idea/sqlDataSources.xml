@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="1aeccc6a-8f8d-485f-b63a-fa031b945155" name="dljd_mybatisplus@localhost Mapping">
+      <data-sources db="404dcead-67a8-4710-8002-1bd2cd8b23dd" />
+      <scope>
+        <node kind="schema" qname="dljd_mybatisplus" />
+      </scope>
+    </mapping>
+  </component>
+</project>

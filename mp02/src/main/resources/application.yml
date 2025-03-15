@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/dljd_mybatisplus?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    # 关闭控制台spring图标：off
+    banner-mode: off
+
+mybatis-plus:
+  global-config:
+    # 关闭控制台mybatis图标：false
+    banner: false
+    db-config:
+      # 当数据库中多个表名和实体类名不匹配，且表名的前缀都相同时，可以在此配置
+      # 也可以使用 @TableName("powershop_user") 注解配置，但每个实体类都需要配置
+      table-prefix: powershop_
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 下划线到驼峰命名映射
+    map-underscore-to-camel-case: true

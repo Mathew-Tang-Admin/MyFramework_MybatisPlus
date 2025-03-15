@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjpowernode.mapper.UserMapper">
+    <!-- id,name,age,email -->
+    <select id="selectByName" resultType="com.bjpowernode.domain.User" parameterType="String">
+        select * from powershop_user where name=#{name}
+    </select>
+</mapper>
