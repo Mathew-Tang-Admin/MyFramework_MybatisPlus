@@ -1,8 +1,14 @@
 package com.bjpowernode;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.toolkit.SimpleQuery;
 import com.bjpowernode.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * TODO: 在ActiveRecord中 万事万物皆对象
@@ -45,5 +51,47 @@ class ActiveRecordTest {
         user.setId(7L);
         User ret = user.selectById();
         System.out.println(ret);
+    }
+
+    /** TODO: SimpleQuery 工具类 */
+    @Test
+    void testList() {
+        /* wrapper: 条件构造器, sFunction: 需要的列, peeks: 后续操作 */
+        List<Long> list = SimpleQuery.list(new LambdaQueryWrapper<User>().eq(User::getName, "Mary"), User::getId);
+        System.out.println(list);
+    }
+
+    @Test
+    void testList2() {
+        /* wrapper: 条件构造器, sFunction: 需要的列, peeks: 后续操作 */
+        List<String> list = SimpleQuery.list(new LambdaQueryWrapper<User>().eq(User::getName, "Mary"),
+                User::getName, user -> {
+                    Optional.of(user.getName()).map(String::toLowerCase).ifPresent(user::setName);
+                });
+        System.out.println(list);
+    }
+
+    @Test
+    void testMap() {
+        Map<Long, User> map = SimpleQuery.keyMap(new LambdaQueryWrapper<User>(), User::getId);
+        System.out.println(map);
+    }
+
+    @Test
+    void testMap2() {
+        Map<Long, User> map = SimpleQuery.keyMap(new LambdaQueryWrapper<User>().eq(User::getId,1L), User::getId);
+        System.out.println(map);
+    }
+
+    @Test
+    void testMap3() {
+        Map<Long, String> map = SimpleQuery.map(new LambdaQueryWrapper<User>(), User::getId, User::getName);
+        System.out.println(map);
+    }
+
+    @Test
+    void testGroup() {
+        Map<String, List<User>> map = SimpleQuery.group(new LambdaQueryWrapper<User>(), User::getName);
+        System.out.println(map);
     }
 }
