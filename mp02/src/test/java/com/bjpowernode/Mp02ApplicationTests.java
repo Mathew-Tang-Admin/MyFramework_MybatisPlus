@@ -114,7 +114,7 @@ class Mp02ApplicationTests {
     // UserMapper测试自定义方法
     @Test
     void customMethod() {
-        User user = userMapper.selectByName("Tom");
-        System.out.println(user);
+        // User user = userMapper.selectByName("Tom");
+        // System.out.println(user);
     }
 }

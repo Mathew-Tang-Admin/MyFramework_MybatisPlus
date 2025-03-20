@@ -16,6 +16,8 @@ mybatis-plus:
       # 当数据库中多个表名和实体类名不匹配，且表名的前缀都相同时，可以在此配置
       # 也可以使用 @TableName("powershop_user") 注解配置，但每个实体类都需要配置
       table-prefix: powershop_
+      # 全局主键策略
+      # id-type:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 下划线到驼峰命名映射

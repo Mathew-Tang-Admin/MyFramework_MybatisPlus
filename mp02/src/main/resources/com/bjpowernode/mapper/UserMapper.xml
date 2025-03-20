@@ -5,7 +5,9 @@
 
 <mapper namespace="com.bjpowernode.mapper.UserMapper">
     <!-- id,name,age,email -->
-    <select id="selectByName" resultType="com.bjpowernode.domain.User" parameterType="String">
+    <select id="selectByName" resultType="com.bjpowernode.domain.User">
         select * from powershop_user where name=#{name}
     </select>
 </mapper>
+
+
