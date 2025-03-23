@@ -18,6 +18,10 @@ mybatis-plus:
       table-prefix: powershop_
       # 全局主键策略
       # id-type:
+      # 逻辑删除-全局配置 和使用注解配置 选择其一
+      logic-delete-field: status # 逻辑删除字段
+      logic-not-delete-value: 1 # 未删除
+      logic-delete-value: 0 # 已删除
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 下划线到驼峰命名映射
