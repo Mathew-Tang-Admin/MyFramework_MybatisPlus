@@ -7,15 +7,14 @@ import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
  * @TableName powershop_user
  */
 @TableName(value ="powershop_user")
-@Alias("userAlias")
 @Data
+@Alias("userAlias")
 public class User implements Serializable {
     /**
      * 主键 ID
@@ -38,33 +37,6 @@ public class User implements Serializable {
      */
     private String email;
 
-    /**
-     * 逻辑删除(1可用,0不可用)
-     */
-    private Integer status;
-
-    /**
-     * 性别
-     */
-    private Integer gender;
-
-    /**
-     * 联系方式
-     */
-    private String contact;
-
-    /**
-     *
-     */
-    private Date createTime;
-
-    /**
-     *
-     */
-    private Date updateTime;
-
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
-
 }

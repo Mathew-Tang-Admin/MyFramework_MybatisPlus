@@ -1,10 +1,7 @@
 package com.bjpowernode.domain;
 
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import com.bjpowernode.enums.GenderEnum;
@@ -66,6 +63,10 @@ public class User extends Model<User> {
     /** 插入、修改时填充该数据 */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
+
+    /** 测试乐观锁 */
+    @Version
+    private Integer version;
 
     // 变量名称
     // private String name;
