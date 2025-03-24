@@ -1,0 +1,24 @@
+spring:
+#  application:
+#    name: microserver-product #这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
+  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource # 咋回事，使用MyBatisX插件生成项目结构后，不加这个项目无法启动成功；
+                                                  # 后面突然又可以了，我觉得是缓存的原因，于是清除缓存，重启，可是还是可以，不懂了
+                                                  # 我知道了，还是*.xml那个项目结构的问题
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/dljd_mybatisplus?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+#    dbcp2:
+#      min-idle: 5                         # 数据库连接池的最小维持连接数
+#      initial-size: 5                     # 初始化连接数
+#      max-total: 5                        # 最大连接数
+#      max-wait-millis: 150                # 等待连接获取的最大超时时间
+  main:
+    # 关闭控制台spring图标：off
+    banner-mode: off
+mybatis-plus:
+  type-aliases-package: com.bjpowernode.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
